@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Описание и характеристики товаров ShopProject.">
+
+    <title>Товары — ShopProject</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__logo" href="index.html">
+                ShopProject
+            </a>
+
+            <nav class="site-nav" aria-label="Основная навигация">
+                <ul class="site-nav__list">
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="index.html">Главная</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="catalog.html">Каталог</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="contacts.html">Контакты</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="index.html#advantages">Преимущества</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="index.html#popular">Популярные товары</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <nav class="breadcrumbs" aria-label="Хлебные крошки">
+            <a class="breadcrumbs__link" href="index.html">Главная</a>
+            <a class="breadcrumbs__link" href="catalog.html">Каталог</a>
+            <span class="breadcrumbs__current" aria-current="page">
+                Карточка товара
+            </span>
+        </nav>
+
+        <!-- Ссылки переключения между товарами -->
+        <nav class="section product-navigation" aria-label="Выбор товара">
+            <a class="button" href="#product-1">Ноутбук</a>
+            <a class="button" href="#product-2">Наушники</a>
+            <a class="button" href="#product-3">Компьютерная мышь</a>
+        </nav>
+
+        <!-- ТОВАР 1: НОУТБУК -->
+        <section class="section product-detail" id="product-1">
+            <h1 class="product-detail__title">Ноутбук</h1>
+
+            <div class="product-detail__layout">
+                <div class="product-detail__media">
+                    <img
+                        class="product-detail__image"
+                        src="images/photo_1.avif"
+                        alt="Серебристый ноутбук с открытым экраном"
+                        width="640"
+                        height="480"
+                    >
+                    <span class="product-detail__badge">Хит</span>
+                </div>
+
+                <div class="product-detail__information">
+                    <h2 class="product-detail__subtitle">Описание товара</h2>
+
+                    <p class="product-detail__description">
+                        Компактный ноутбук для учёбы, работы и повседневных задач.
+                        Подходит для работы с документами, просмотра видео
+                        и использования интернет-сервисов.
+                    </p>
+
+                    <p class="product-detail__price">
+                        Цена: 1000 руб.
+                    </p>
+
+                    <p class="product-detail__availability">
+                        Наличие: в наличии
+                    </p>
+
+                    <a class="button button--primary" href="order.html?product=1">
+                        Оформить заявку
+                    </a>
+
+                    <a class="product-detail__back" href="catalog.html">
+                        Вернуться в каталог
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-specifications">
+                <h2>Характеристики товара</h2>
+
+                <div class="table-wrapper">
+                    <table class="product-table">
+                        <caption class="product-table__caption">
+                            Характеристики ноутбука
+                        </caption>
+
+                        <thead class="product-table__head">
+                            <tr>
+                                <th scope="col">Параметр</th>
+                                <th scope="col">Значение</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <th scope="row">Категория</th>
+                                <td>Ноутбуки</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Цвет</th>
+                                <td>Серебристый</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Цена</th>
+                                <td>1000 руб.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Наличие</th>
+                                <td>В наличии</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Артикул</th>
+                                <td>001</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ТОВАР 2: НАУШНИКИ -->
+        <section class="section product-detail" id="product-2">
+            <h1 class="product-detail__title">Беспроводные наушники</h1>
+
+            <div class="product-detail__layout">
+                <div class="product-detail__media">
+                    <img
+                        class="product-detail__image"
+                        src="images/photo_2.avif"
+                        alt="Чёрные полноразмерные наушники на жёлтом фоне"
+                        width="640"
+                        height="480"
+                        loading="lazy"
+                    >
+                    <span class="product-detail__badge">Новинка</span>
+                </div>
+
+                <div class="product-detail__information">
+                    <h2 class="product-detail__subtitle">Описание товара</h2>
+
+                    <p class="product-detail__description">
+                        Полноразмерные наушники для прослушивания музыки,
+                        просмотра фильмов и общения.
+                        Мягкие амбушюры обеспечивают комфортное использование.
+                    </p>
+
+                    <p class="product-detail__price">
+                        Цена: 1500 руб.
+                    </p>
+
+                    <p class="product-detail__availability">
+                        Наличие: в наличии
+                    </p>
+
+                    <a class="button button--primary" href="order.html?product=2">
+                        Оформить заявку
+                    </a>
+
+                    <a class="product-detail__back" href="catalog.html">
+                        Вернуться в каталог
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-specifications">
+                <h2>Характеристики товара</h2>
+
+                <div class="table-wrapper">
+                    <table class="product-table">
+                        <caption class="product-table__caption">
+                            Характеристики наушников
+                        </caption>
+
+                        <thead class="product-table__head">
+                            <tr>
+                                <th scope="col">Параметр</th>
+                                <th scope="col">Значение</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <th scope="row">Категория</th>
+                                <td>Аудиотехника</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Тип</th>
+                                <td>Полноразмерные</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Цвет</th>
+                                <td>Чёрный</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Цена</th>
+                                <td>1500 руб.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Наличие</th>
+                                <td>В наличии</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Артикул</th>
+                                <td>002</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ТОВАР 3: КОМПЬЮТЕРНАЯ МЫШЬ -->
+        <section class="section product-detail" id="product-3">
+            <h1 class="product-detail__title">Компьютерная мышь</h1>
+
+            <div class="product-detail__layout">
+                <div class="product-detail__media">
+                    <img
+                        class="product-detail__image"
+                        src="images/photo_3.avif"
+                        alt="Компьютерные мыши на светлом фоне"
+                        width="640"
+                        height="480"
+                        loading="lazy"
+                    >
+                    <span class="product-detail__badge">Популярный</span>
+                </div>
+
+                <div class="product-detail__information">
+                    <h2 class="product-detail__subtitle">Описание товара</h2>
+
+                    <p class="product-detail__description">
+                        Компьютерная мышь для повседневной работы.
+                        Подходит для использования с ноутбуками
+                        и настольными компьютерами.
+                    </p>
+
+                    <p class="product-detail__price">
+                        Цена: 2000 руб.
+                    </p>
+
+                    <p class="product-detail__availability">
+                        Наличие: в наличии
+                    </p>
+
+                    <a class="button button--primary" href="order.html?product=3">
+                        Оформить заявку
+                    </a>
+
+                    <a class="product-detail__back" href="catalog.html">
+                        Вернуться в каталог
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-specifications">
+                <h2>Характеристики товара</h2>
+
+                <div class="table-wrapper">
+                    <table class="product-table">
+                        <caption class="product-table__caption">
+                            Характеристики компьютерной мыши
+                        </caption>
+
+                        <thead class="product-table__head">
+                            <tr>
+                                <th scope="col">Параметр</th>
+                                <th scope="col">Значение</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <th scope="row">Категория</th>
+                                <td>Периферия</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Тип</th>
+                                <td>Компьютерная мышь</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Цвет</th>
+                                <td>Чёрный</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Цена</th>
+                                <td>2000 руб.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Наличие</th>
+                                <td>В наличии</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Артикул</th>
+                                <td>003</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <aside class="aside-info">
+            <h2>Дополнительная информация</h2>
+            <p>
+                Для оформления заявки перейдите на страницу заказа.
+                Отправка данных на сервер в учебном проекте
+                не предусмотрена.
+            </p>
+        </aside>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Учебный проект. Все права защищены.</p>
+        <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+    </footer>
+</body>
+</html>
