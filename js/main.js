@@ -1,100 +1,135 @@
-// Получаем модальное окно
-const orderDialog = document.getElementById('order-dialog');
+(() => {
+"use strict";
+// Практическая №13. Доступность формы и модального окна.
+// Скрипт безопасно подключать на все страницы: отсутствующие блоки пропускаются.
 
-// Получаем все кнопки "Заказать"
-const orderButtons = document.querySelectorAll('.product-card__button');
+function errorText(field) {
+    if (field.validity.valueMissing) {
+        return field.type === 'checkbox'
+            ? 'Подтвердите согласие на обработку данных.'
+            : field.tagName === 'SELECT'
+                ? 'Выберите значение из списка.'
+                : 'Заполните обязательное поле.';
+    }
+    if (field.validity.typeMismatch) return 'Введите корректный адрес электронной почты.';
+    if (field.validity.patternMismatch) return 'Используйте указанный формат телефона.';
+    if (field.validity.tooShort) return 'Введите не менее двух символов.';
+    return 'Исправьте значение в этом поле.';
+}
 
-// Получаем кнопку "Закрыть"
-const closeDialogButton =
-    document.getElementById('close-order-dialog');
+function setError(field, message) {
+    const error = document.getElementById(`${field.id}-error`);
+    if (!error) return;
+    const hasError = Boolean(message);
+    error.hidden = !hasError;
+    const descriptions = new Set((field.getAttribute('aria-describedby') || '').split(/\s+/).filter(Boolean));
+    if (hasError) descriptions.add(error.id);
+    else descriptions.delete(error.id);
+    if (descriptions.size) field.setAttribute('aria-describedby', [...descriptions].join(' '));
+    else field.removeAttribute('aria-describedby');
+    if (hasError) {
+        error.textContent = message;
+        field.setAttribute('aria-invalid', 'true');
+    } else {
+        field.removeAttribute('aria-invalid');
+    }
+}
 
-// Получаем скрытое поле выбранного товара
-const selectedProductInput =
-    document.getElementById('selected-product');
+function setupValidation(form, onValid) {
+    if (!form) return;
+    const controls = Array.from(form.querySelectorAll('input, select, textarea'))
+        .filter((field) => field.type !== 'hidden');
 
-// Получаем форму
-const orderForm =
-    document.getElementById('order-form');
-
-// Получаем сообщение об успешной отправке
-const successMessage =
-    document.getElementById('success-message');
-
-
-// Открываем окно при нажатии на "Заказать"
-orderButtons.forEach((button) => {
-
-    button.addEventListener('click', () => {
-
-        const productName = button.dataset.product;
-
-        selectedProductInput.value = productName;
-
-        orderDialog.showModal();
-
-    });
-
-});
-
-
-// Закрываем окно
-closeDialogButton.addEventListener('click', () => {
-
-    orderDialog.close();
-
-});
-
-
-// Обработка отправки формы
-orderForm.addEventListener('submit', (event) => {
-
-    event.preventDefault();
-
-
-    // Убираем старые ошибки
-    const formElements = Array.from(orderForm.elements);
-
-    formElements.forEach((element) => {
-
-        if (element.willValidate) {
-            element.removeAttribute('aria-invalid');
-        }
-
-    });
-
-
-    // Проверяем форму
-    if (!orderForm.checkValidity()) {
-
-        formElements.forEach((element) => {
-
-            if (
-                element.willValidate &&
-                !element.checkValidity()
-            ) {
-                element.setAttribute(
-                    'aria-invalid',
-                    'true'
-                );
-            }
-
-        });
-
-        orderForm.reportValidity();
-
-        return;
+    for (const field of controls) {
+        const clear = () => {
+            if (field.validity.valid) setError(field, '');
+        };
+        field.addEventListener('input', clear);
+        field.addEventListener('change', clear);
     }
 
+    form.addEventListener('submit', (event) => {
+        event.preventDefault(); // Учебная демонстрация без сервера.
+        let firstInvalid = null;
+        for (const field of controls) {
+            if (!field.validity.valid) {
+                setError(field, errorText(field));
+                firstInvalid ??= field;
+            } else {
+                setError(field, '');
+            }
+        }
+        if (firstInvalid) {
+            firstInvalid.focus();
+            firstInvalid.reportValidity();
+            return;
+        }
+        form.reset();
+        controls.forEach((field) => setError(field, ''));
+        onValid();
+    });
+}
 
-    // Показываем сообщение
-    successMessage.hidden = false;
+const dialog = document.getElementById('order-dialog');
+const modalForm = document.getElementById('order-form');
+const modalStatus = document.getElementById('success-message');
+let modalTrigger = null;
+let modalSubmitted = false;
 
+if (dialog && modalForm) {
+    const selectedProduct = document.getElementById('selected-product');
+    document.querySelectorAll('[data-product]').forEach((button) => {
+        button.addEventListener('click', () => {
+            modalTrigger = button;
+            modalSubmitted = false;
+            if (selectedProduct) selectedProduct.value = button.dataset.product;
+            if (modalStatus) modalStatus.hidden = true;
+            dialog.showModal(); // Native dialog: focus trap and Escape key.
+            modalForm.querySelector('input:not([type="hidden"])')?.focus();
+        });
+    });
 
-    // Очищаем форму
-    orderForm.reset();
+    document.getElementById('close-order-dialog')?.addEventListener('click', () => {
+        dialog.close();
+    });
 
+    dialog.addEventListener('close', () => {
+        if (!modalSubmitted) modalTrigger?.focus();
+    });
 
-    // Закрываем модальное окно
-    orderDialog.close();
+    setupValidation(modalForm, () => {
+        modalSubmitted = true;
+        dialog.close();
+        if (modalStatus) {
+            modalStatus.hidden = false;
+            modalStatus.focus();
+        }
+    });
+}
 
-});
+const pageForm = document.getElementById('page-order-form');
+if (pageForm) {
+    const productSelect = document.getElementById('page-order-product');
+    const productParam = new URLSearchParams(window.location.search).get('product');
+    const status = document.getElementById('page-success-message');
+
+    if (productSelect && ['1', '2', '3'].includes(productParam)) {
+        productSelect.value = productParam;
+    }
+
+    setupValidation(pageForm, () => {
+        if (status) {
+            status.hidden = false;
+            status.focus();
+        }
+    });
+
+    pageForm.addEventListener('input', () => {
+        if (status) status.hidden = true;
+    });
+    pageForm.addEventListener('reset', () => {
+        if (status) status.hidden = true;
+    });
+}
+
+})();

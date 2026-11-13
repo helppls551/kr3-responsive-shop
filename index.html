@@ -1,259 +1,310 @@
+
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Каталог товаров</title>
+    <meta name="description" content="ShopProject — учебный магазин ноутбуков, наушников и компьютерных аксессуаров.">
+    <title>Главная — ShopProject</title>
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <script src="js/main.js" defer></script>
 </head>
-
 <body>
+    <a class="skip-link" href="#main">
+        Перейти к основному содержимому
+    </a>
 
     <header class="site-header">
         <div class="site-header__inner">
-
-            <a class="site-header__logo" href="index.html">
-                ShopProject
-            </a>
+            <a class="site-header__logo" href="index.html">ShopProject</a>
 
             <nav class="site-nav" aria-label="Основная навигация">
                 <ul class="site-nav__list">
                     <li class="site-nav__item">
-                        <a class="site-nav__link site-nav__link--active"  href="index.html">Главная</a>
+                        <a class="site-nav__link site-nav__link--active"
+                           href="index.html" aria-current="page">Главная</a>
                     </li>
                     <li class="site-nav__item">
                         <a class="site-nav__link" href="catalog.html">Каталог</a>
                     </li>
                     <li class="site-nav__item">
+                        <a class="site-nav__link" href="product.html">Товары</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="order.html">Заявка</a>
+                    </li>
+                    <li class="site-nav__item">
                         <a class="site-nav__link" href="contacts.html">Контакты</a>
                     </li>
                     <li class="site-nav__item">
-                        <a class="site-nav__link" href="index.html#advantages">Преимущества</a>
+                        <a class="site-nav__link" href="#advantages">Преимущества</a>
                     </li>
                     <li class="site-nav__item">
-                        <a class="site-nav__link" href="index.html#popular">Популярные товары</a>
+                        <a class="site-nav__link" href="#popular">Популярные товары</a>
                     </li>
                     <li class="site-nav__item">
-                        <a class="site-nav__link" href="index.html#contacts">Обратная связь</a>
+                        <a class="site-nav__link" href="#contacts">Обратная связь</a>
                     </li>
                 </ul>
             </nav>
-
         </div>
     </header>
 
-
-    <main>
-
+    <main id="main" tabindex="-1">
         <section class="hero">
+            <div class="hero__content">
+                <h1 class="hero__title">Учебный интернет-магазин</h1>
+                <p>
+                    Выберите ноутбук, наушники или компьютерную мышь.
+                    На сайте можно изучить характеристики и оставить учебную заявку.
+                </p>
+                <a class="button button--primary" href="#popular">
+                    Перейти к товарам
+                </a>
+            </div>
 
-            <h1>Учебный интернет-магазин</h1>
-
-            <p>
-                Это стартовая страница учебного frontend-проекта.
-                В дальнейшем на её основе будет разработан
-                многостраничный сайт интернет-магазина или каталога услуг.
-            </p>
-
-            <a class="button" href="#popular">
-                Перейти к товарам
-            </a>
-
+            <picture class="hero__media">
+                <source media="(min-width: 900px)"
+                        srcset="images/product-1-960.jpg">
+                <img class="hero__image"
+                     src="images/product-1-640.jpg"
+                     alt="Серебристый ноутбук"
+                     width="640" height="480">
+            </picture>
         </section>
-
 
         <section class="section" id="advantages">
-
             <h2>Преимущества проекта</h2>
-
             <ul class="advantages-list">
-                <li>понятная HTML-структура;</li>
-                <li>семантические блоки страницы;</li>
-                <li>подключение внешнего CSS-файла;</li>
-                <li>подготовка к разработке многостраничного сайта.</li>
+                <li>Понятная HTML-структура.</li>
+                <li>Семантические блоки страницы.</li>
+                <li>Подключение внешнего CSS-файла.</li>
+                <li>Адаптивная вёрстка для разных экранов.</li>
             </ul>
-
         </section>
 
-
         <section class="section" id="popular">
-  <h2>Популярные товары</h2>
+            <h2>Популярные товары</h2>
 
-  <div class="products-grid">
-    <article class="product-card product-card--featured">
-      <h3 class="product-card__title">Товар 1</h3>
-      <p class="product-card__description">Краткое описание учебного товара.</p>
-      <p class="product-card__price">Цена: 1000 руб.</p>
-      <button class="button product-card__button" type="button" data-product="Товар 1">
-        Заказать
-      </button>
-    </article>
+            <div class="products-grid">
+                <article class="product-card product-card--featured">
+                    <img class="product-card__image"
+                         src="images/product-1-640.jpg"
+                         srcset="images/product-1-480.jpg 480w,
+                                 images/product-1-640.jpg 640w,
+                                 images/product-1-960.jpg 960w"
+                         sizes="(max-width: 639px) 100vw,
+                                (max-width: 1023px) 50vw, 33vw"
+                         alt="Серебристый ноутбук"
+                         width="640" height="480"
+                         loading="lazy">
 
-    <article class="product-card product-card--featured">
-      <h3 class="product-card__title">Товар 2</h3>
-      <p class="product-card__description">Краткое описание учебного товара.</p>
-      <p class="product-card__price">Цена: 1500 руб.</p>
-      <button class="button product-card__button" type="button" data-product="Товар 2">
-        Заказать
-      </button>
-    </article>
+                    <h3 class="product-card__title">Ноутбук</h3>
+                    <p class="product-card__description">
+                        Компактный ноутбук для учёбы и работы.
+                    </p>
+                    <p class="product-card__price">Цена: 1000 руб.</p>
 
-    <article class="product-card product-card--featured">
-      <h3 class="product-card__title">Товар 3</h3>
-      <p class="product-card__description">Краткое описание учебного товара.</p>
-      <p class="product-card__price">Цена: 2000 руб.</p>
-      <button class="button product-card__button" type="button" data-product="Товар 3">
-        Заказать
-      </button>
-    </article>
-  </div>
-</section>
+                    <button class="button product-card__button"
+                            type="button" data-product="Товар 1">
+                        Заказать
+                    </button>
+                    <a href="product.html#product-1">Подробнее</a>
+                </article>
 
+                <article class="product-card product-card--featured">
+                    <img class="product-card__image"
+                         src="images/product-2-640.jpg"
+                         srcset="images/product-2-480.jpg 480w,
+                                 images/product-2-640.jpg 640w,
+                                 images/product-2-960.jpg 960w"
+                         sizes="(max-width: 639px) 100vw,
+                                (max-width: 1023px) 50vw, 33vw"
+                         alt="Чёрные полноразмерные наушники"
+                         width="640" height="480"
+                         loading="lazy">
 
+                    <h3 class="product-card__title">Наушники</h3>
+                    <p class="product-card__description">
+                        Полноразмерные наушники для музыки и общения.
+                    </p>
+                    <p class="product-card__price">Цена: 1500 руб.</p>
+
+                    <button class="button product-card__button"
+                            type="button" data-product="Товар 2">
+                        Заказать
+                    </button>
+                    <a href="product.html#product-2">Подробнее</a>
+                </article>
+
+                <article class="product-card product-card--featured">
+                    <img class="product-card__image"
+                         src="images/product-3-640.jpg"
+                         srcset="images/product-3-480.jpg 480w,
+                                 images/product-3-640.jpg 640w,
+                                 images/product-3-960.jpg 960w"
+                         sizes="(max-width: 639px) 100vw,
+                                (max-width: 1023px) 50vw, 33vw"
+                         alt="Две компьютерные мыши"
+                         width="640" height="480"
+                         loading="lazy">
+
+                    <h3 class="product-card__title">Компьютерная мышь</h3>
+                    <p class="product-card__description">
+                        Удобная мышь для повседневных задач.
+                    </p>
+                    <p class="product-card__price">Цена: 2000 руб.</p>
+
+                    <button class="button product-card__button"
+                            type="button" data-product="Товар 3">
+                        Заказать
+                    </button>
+                    <a href="product.html#product-3">Подробнее</a>
+                </article>
+            </div>
+        </section>
 
         <aside class="aside-info">
-
             <h2>Информация для студентов</h2>
-
             <p>
-                На следующих практических занятиях этот проект будет расширяться:
-                появятся формы, модальное окно, дополнительные страницы,
-                Flex/Grid, БЭМ-структура и адаптивная версия сайта.
+                Это учебный проект по дисциплине
+                «Фронтенд и бэкенд разработка».
             </p>
-
         </aside>
-
     </main>
 
-
     <footer id="contacts">
-
-        <p>
-            &copy; 2026 Учебный проект. Все права защищены.
-        </p>
-
-        <p>
-            Дисциплина: Фронтенд и бэкенд разработка
-        </p>
-
+        <p>© 2026 Учебный проект. Все права защищены.</p>
+        <p>Дисциплина: Фронтенд и бэкенд разработка</p>
     </footer>
 
-    <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog__title">
-    <h2 id="order-dialog__title">Оформление заявки</h2>
+    <dialog class="order-dialog" id="order-dialog"
+            aria-labelledby="order-dialog-title">
+        <h2 class="order-dialog__title" id="order-dialog-title">
+            Оформление заявки
+        </h2>
 
-        <form class="order-form" id="order-form" action="#" method="post" novalidate>
-            <input id="selected-product" name="selected-product" type="hidden">
+        <form class="order-form" id="order-form"
+              action="#" method="post" novalidate>
+
+            <p class="form-note">
+                Поля со звёздочкой (*) обязательны для заполнения.
+            </p>
+
+            <input id="selected-product"
+                   name="selected-product" type="hidden">
 
             <div class="order-form__field">
-                <label class="order-form__label" for="order-name">Имя</label>
-                <input
-                    class="order-form__input"
-                    id="order-name"
-                    name="name"
-                    type="text"
-                    placeholder="Введите ваше имя"
-                    minlength="2"
-                    autocomplete="given-name"
-                    required
-                >
+                <label class="order-form__label" for="order-name">
+                    Имя <abbr title="Обязательное поле">*</abbr>
+                </label>
+                <input class="order-form__input"
+                       id="order-name" name="name" type="text"
+                       placeholder="Введите ваше имя"
+                       minlength="2" autocomplete="given-name" required>
+                <p class="form-error" id="order-name-error"
+                   role="alert" hidden>
+                    Проверьте правильность заполнения поля.
+                </p>
             </div>
 
             <div class="order-form__field">
-                <label class="order-form__label" for="order-email">E-mail</label>
-                <input
-                    class="order-form__input"
-                    id="order-email"
-                    name="email"
-                    type="email"
-                    placeholder="example@mail.ru"
-                    autocomplete="email"
-                    required
-                >
+                <label class="order-form__label" for="order-email">
+                    E-mail <abbr title="Обязательное поле">*</abbr>
+                </label>
+                <input class="order-form__input"
+                       id="order-email" name="email" type="email"
+                       placeholder="example@mail.ru"
+                       autocomplete="email" required>
+                <p class="form-error" id="order-email-error"
+                   role="alert" hidden>
+                    Проверьте правильность заполнения поля.
+                </p>
             </div>
 
             <div class="order-form__field">
-                <label class="order-form__label" for="order-phone">Телефон</label>
-                <input
-                    class="order-form__input"
-                    id="order-phone"
-                    name="phone"
-                    type="tel"
-                    inputmode="tel"
-                    placeholder="+7 (900) 000-00-00"
-                    pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
-                    required
-                >
+                <label class="order-form__label" for="order-phone">
+                    Телефон <abbr title="Обязательное поле">*</abbr>
+                </label>
+                <input class="order-form__input"
+                       id="order-phone" name="phone" type="tel"
+                       inputmode="tel"
+                       placeholder="+7 (900) 000-00-00"
+                       pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
+                       required>
                 <small>Формат: +7 (900) 000-00-00</small>
+                <p class="form-error" id="order-phone-error"
+                   role="alert" hidden>
+                    Проверьте правильность заполнения поля.
+                </p>
             </div>
 
             <div class="order-form__field">
-                <label class="order-form__label" for="order-date">Дата связи</label>
-                <input
-                    class="order-form__input"
-                    id="order-date"
-                    name="date"
-                    type="date"
-                >
+                <label class="order-form__label" for="order-date">
+                    Дата связи
+                </label>
+                <input class="order-form__input"
+                       id="order-date" name="date" type="date">
             </div>
 
             <div class="order-form__field">
-                <label class="order-form__label" for="order-topic">Тема заявки</label>
-                <select class="order-form__input" id="order-topic" name="topic" required>
+                <label class="order-form__label" for="order-topic">
+                    Тема заявки <abbr title="Обязательное поле">*</abbr>
+                </label>
+                <select class="order-form__input"
+                        id="order-topic" name="topic" required>
                     <option value="">Выберите тему</option>
                     <option value="product">Заказ товара</option>
                     <option value="consultation">Консультация</option>
                     <option value="delivery">Доставка</option>
                 </select>
+                <p class="form-error" id="order-topic-error"
+                   role="alert" hidden>
+                    Проверьте правильность заполнения поля.
+                </p>
             </div>
 
             <div class="order-form__field">
-                <label class="order-form__label" for="order-comment">Комментарий</label>
-                <textarea
-                    class="order-form__input"
-                    id="order-comment"
-                    name="comment"
-                    rows="4"
-                    placeholder="Укажите дополнительную информацию"
-                ></textarea>
+                <label class="order-form__label" for="order-comment">
+                    Комментарий
+                </label>
+                <textarea class="order-form__input"
+                          id="order-comment" name="comment"
+                          rows="4"
+                          placeholder="Укажите дополнительную информацию"></textarea>
             </div>
 
             <div class="order-form__field">
                 <label class="order-form__label" for="order-agreement">
-                    <input
-                        id="order-agreement"
-                        name="agreement"
-                        type="checkbox"
-                        required
-                    >
+                    <input id="order-agreement" name="agreement"
+                           type="checkbox" required>
                     Я согласен на обработку данных
+                    <abbr title="Обязательное поле">*</abbr>
                 </label>
+                <p class="form-error" id="order-agreement-error"
+                   role="alert" hidden>
+                    Проверьте правильность заполнения поля.
+                </p>
             </div>
 
             <div class="order-form__actions">
                 <button class="button button--primary" type="submit">
                     Отправить заявку
                 </button>
-                <button class="button button--secondary" type="button" id="close-order-dialog">
+                <button class="button button--secondary"
+                        type="button" id="close-order-dialog">
                     Закрыть
                 </button>
             </div>
         </form>
     </dialog>
 
-    <p
-        class="success-message"
-        id="success-message"
-        hidden>
-
-        Форма успешно отправлена!
-
+    <p class="success-message" id="success-message"
+       role="status" aria-live="polite"
+       tabindex="-1" hidden>
+        Заявка проверена! Данные на сервер не отправлялись.
     </p>
-
 </body>
-
 </html>
