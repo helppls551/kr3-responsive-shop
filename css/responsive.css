@@ -1,0 +1,59 @@
+/* Практическая №12. Mobile First: этот файл подключается ПОСЛЕ style.css. */
+
+/* 1. Телефон: компактные отступы и одна колонка */
+.section { padding-block: clamp(16px, 3vw, 40px); }
+.site-header { position: static; }
+.site-nav__list { flex-direction: column; align-items: stretch; }
+.hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-lg);
+    align-items: center;
+}
+.hero__title { font-size: clamp(28px, 7vw, 56px); }
+.products-grid { grid-template-columns: minmax(0, 1fr); }
+.catalog-layout {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "filters" "products";
+}
+.catalog-filters { position: static; }
+.product-detail__layout { grid-template-columns: minmax(0, 1fr); }
+.order-page__form { grid-template-columns: minmax(0, 1fr); }
+.table-wrapper { overflow-x: auto; }
+.order-dialog { max-height: calc(100dvh - 32px); overflow-y: auto; }
+
+/* 2. Небольшие планшеты: две карточки в строке */
+@media (min-width: 640px) {
+    .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* 3. Планшеты: горизонтальная навигация, две колонки в товаре и форме */
+@media (min-width: 768px) {
+    .site-header__inner { flex-direction: row; align-items: center; flex-wrap: wrap; }
+    .site-nav__list { flex-direction: row; flex-wrap: wrap; align-items: center; }
+    .product-detail__layout { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .order-page__form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .order-page__form .order-form__field--wide,
+    .order-page__form .order-form__field--checkbox,
+    .order-page__form .order-form__actions { grid-column: 1 / -1; }
+}
+
+/* 4. Ноутбук: hero с картинкой в двух колонках */
+@media (min-width: 900px) {
+    .hero:has(.hero__media) {
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 480px);
+    }
+}
+
+/* 5. Компьютер: три карточки, фильтр сбоку, закреплённая шапка */
+@media (min-width: 1024px) {
+    .site-header { position: sticky; top: 0; z-index: 100; }
+    .products-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .catalog-layout {
+        grid-template-columns: 260px minmax(0, 1fr);
+        grid-template-areas: "filters products";
+        align-items: start;
+    }
+    .catalog-filters { position: sticky; top: 120px; }
+    .product-detail { scroll-margin-top: 130px; }
+}

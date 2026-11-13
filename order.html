@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Форма оформления заявки на товар учебного интернет-магазина.">
+    <title>Оформление заявки — ShopProject</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#main">
+        Перейти к основному содержимому
+    </a>
+
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__logo" href="index.html">ShopProject</a>
+
+            <nav class="site-nav" aria-label="Основная навигация">
+                <ul class="site-nav__list">
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="index.html">Главная</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="catalog.html">Каталог</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="product.html">Товары</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link site-nav__link--active"
+                           href="order.html" aria-current="page">Заявка</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="contacts.html">Контакты</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="index.html#advantages">Преимущества</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="index.html#popular">Популярные товары</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+        <nav class="breadcrumbs" aria-label="Хлебные крошки">
+            <a class="breadcrumbs__link" href="index.html">Главная</a>
+            <span class="breadcrumbs__current" aria-current="page">
+                Оформление заявки
+            </span>
+        </nav>
+
+        <section class="section order-page" aria-labelledby="order-page-title">
+            <h1 id="order-page-title">Оформление заявки</h1>
+
+            <p>
+                Заполните форму, чтобы оставить учебную заявку на товар.
+                Отправка данных на сервер не выполняется.
+            </p>
+
+            <form class="order-form order-page__form"
+                  id="page-order-form" action="#" method="post" novalidate>
+
+                <p class="form-note">
+                    Поля со звёздочкой (*) обязательны для заполнения.
+                </p>
+
+                <div class="order-form__field">
+                    <label class="order-form__label" for="page-order-name">
+                        Имя <abbr title="Обязательное поле">*</abbr>
+                    </label>
+                    <input class="order-form__input"
+                           id="page-order-name" name="name"
+                           type="text" minlength="2"
+                           autocomplete="given-name"
+                           placeholder="Введите ваше имя" required>
+
+                    <p class="form-error" id="page-order-name-error"
+                       role="alert" hidden>
+                        Проверьте правильность заполнения поля.
+                    </p>
+                </div>
+
+                <div class="order-form__field">
+                    <label class="order-form__label" for="page-order-email">
+                        E-mail <abbr title="Обязательное поле">*</abbr>
+                    </label>
+                    <input class="order-form__input"
+                           id="page-order-email" name="email"
+                           type="email" autocomplete="email"
+                           placeholder="example@mail.ru" required>
+
+                    <p class="form-error" id="page-order-email-error"
+                       role="alert" hidden>
+                        Проверьте правильность заполнения поля.
+                    </p>
+                </div>
+
+                <div class="order-form__field">
+                    <label class="order-form__label" for="page-order-phone">
+                        Телефон <abbr title="Обязательное поле">*</abbr>
+                    </label>
+                    <input class="order-form__input"
+                           id="page-order-phone" name="phone"
+                           type="tel" inputmode="tel"
+                           placeholder="+7 (900) 000-00-00"
+                           pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}"
+                           aria-describedby="phone-hint" required>
+
+                    <small id="phone-hint">
+                        Формат: +7 (900) 000-00-00
+                    </small>
+
+                    <p class="form-error" id="page-order-phone-error"
+                       role="alert" hidden>
+                        Проверьте правильность заполнения поля.
+                    </p>
+                </div>
+
+                <div class="order-form__field">
+                    <label class="order-form__label" for="page-order-date">
+                        Дата связи
+                    </label>
+                    <input class="order-form__input"
+                           id="page-order-date" name="date" type="date">
+                </div>
+
+                <div class="order-form__field">
+                    <label class="order-form__label" for="page-order-product">
+                        Выбранный товар
+                        <abbr title="Обязательное поле">*</abbr>
+                    </label>
+                    <select class="order-form__select"
+                            id="page-order-product" name="product" required>
+                        <option value="">Выберите товар</option>
+                        <option value="1">Товар 1 — 1000 руб.</option>
+                        <option value="2">Товар 2 — 1500 руб.</option>
+                        <option value="3">Товар 3 — 2000 руб.</option>
+                    </select>
+
+                    <p class="form-error" id="page-order-product-error"
+                       role="alert" hidden>
+                        Проверьте правильность заполнения поля.
+                    </p>
+                </div>
+
+                <div class="order-form__field">
+                    <label class="order-form__label" for="page-order-topic">
+                        Тема заявки
+                        <abbr title="Обязательное поле">*</abbr>
+                    </label>
+                    <select class="order-form__select"
+                            id="page-order-topic" name="topic" required>
+                        <option value="">Выберите тему</option>
+                        <option value="product">Заказ товара</option>
+                        <option value="consultation">Консультация</option>
+                        <option value="delivery">Доставка</option>
+                    </select>
+
+                    <p class="form-error" id="page-order-topic-error"
+                       role="alert" hidden>
+                        Проверьте правильность заполнения поля.
+                    </p>
+                </div>
+
+                <div class="order-form__field">
+                    <label class="order-form__label" for="page-order-comment">
+                        Комментарий
+                    </label>
+                    <textarea class="order-form__textarea"
+                              id="page-order-comment" name="comment"
+                              rows="4"
+                              placeholder="Укажите дополнительную информацию"></textarea>
+                </div>
+
+                <div class="order-form__field order-form__field--checkbox">
+                    <label class="order-form__label" for="page-order-agreement">
+                        <input id="page-order-agreement"
+                               name="agreement" type="checkbox" required>
+                        Я согласен на обработку данных
+                        <abbr title="Обязательное поле">*</abbr>
+                    </label>
+
+                    <p class="form-error" id="page-order-agreement-error"
+                       role="alert" hidden>
+                        Проверьте правильность заполнения поля.
+                    </p>
+                </div>
+
+                <div class="order-form__actions">
+                    <button class="button button--primary" type="submit">
+                        Отправить заявку
+                    </button>
+                    <button class="button button--secondary" type="reset">
+                        Очистить
+                    </button>
+                </div>
+            </form>
+
+            <p class="success-message" id="page-success-message"
+               role="status" aria-live="polite"
+               tabindex="-1" hidden>
+                Заявка проверена! Данные на сервер не отправлялись.
+            </p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>© 2026 Учебный проект. Все права защищены.</p>
+        <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+    </footer>
+</body>
+</html>
